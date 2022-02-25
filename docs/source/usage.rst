@@ -1,16 +1,26 @@
-Usage
+Architecture
 =====
 
-.. _installation:
+.. _Library:
 
-Installation
+Library
 ------------
 
-To use Lumache, first install it using pip:
+To build the architecture of VQVAE, first import library:
 
 .. code-block:: console
 
-   (.venv) $ pip install lumache
+   import os
+   import numpy as np
+   import torch
+   import torch.nn as nn
+   import torch.nn.functional as F
+   from torchvision import datasets, transforms
+   from sklearn.manifold import TSNE
+   import pandas as pd
+   import matplotlib.pyplot as plt
+   import seaborn as sns
+   %matplotlib inline
 
 Creating recipes
 ----------------
