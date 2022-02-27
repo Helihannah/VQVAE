@@ -59,9 +59,59 @@ The code for normalised part is shown below:
    
 .. _Moddel:
 
-Model
+Standard VQ-VAE consists of three parts: encoder, decoder and embedding space.
+
+encoder
 ------------
 
+Encoder consists of three convolutional layers and two activation layers
+
+.. code-block:: console
+
+   class Encoder(nn.Module):
+       """Encoder of VQ-VAE"""
+
+       def __init__(self, in_dim=3, latent_dim=16):
+           super().__init__()
+           self.in_dim = in_dim
+           self.latent_dim = latent_dim
+
+           self.convs = nn.Sequential(
+               nn.Conv2d(in_dim, 32, 3, stride=2, padding=1),
+               nn.ReLU(inplace=True),
+               nn.Conv2d(32, 64, 3, stride=2, padding=1),
+               nn.ReLU(inplace=True),
+               nn.Conv2d(64, latent_dim, 1),
+           )
+
+       def forward(self, x):
+           return self.convs(x)
+
+decoder
+----------------
+
+The structure of encoder and decoder is almost identical except that convolutional layers are replaced by transposed convolution layers. 
+
+.. code-block:: console
+
+   class Decoder(nn.Module):
+       """Decoder of VQ-VAE"""
+
+       def __init__(self, out_dim=1, latent_dim=16):
+           super().__init__()
+           self.out_dim = out_dim
+           self.latent_dim = latent_dim
+
+           self.convs = nn.Sequential(
+               nn.ConvTranspose2d(latent_dim, 64, 3, stride=2, padding=1, output_padding=1),
+               nn.ReLU(inplace=True),
+               nn.ConvTranspose2d(64, 32, 3, stride=2, padding=1, output_padding=1),
+               nn.ReLU(inplace=True),
+               nn.ConvTranspose2d(32, out_dim, 3, padding=1),
+           )
+
+       def forward(self, x):
+           return self.convs(x)
 
 
 
