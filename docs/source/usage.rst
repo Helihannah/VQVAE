@@ -27,7 +27,7 @@ To build the architecture of VQVAE, first import library:
 Hyperparameters
 ------------
 
-Hyperparameters are parameters whose value are used to control the learning process.
+Hyperparameters are parameters whose values are used to control the learning process.
 
 .. code-block:: console
 
@@ -46,6 +46,25 @@ Dataset
 ------------
 
 Test on the MNIST dataset and compute the variance of the whole training set to normalise the Mean Squared Error.
+
+The code for normalised part is shown below:
+
+.. code-block:: console
+
+   train_images = []
+   for images, labels in train_loader:
+      train_images.append(images)
+   train_images = torch.cat(train_images, dim=0)
+   train_data_variance = torch.var(train_images)
+   
+.. _Moddel:
+
+Model
+------------
+
+
+
+
 
 
 
