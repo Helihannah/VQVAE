@@ -27,6 +27,8 @@ To build the architecture of VQVAE, first import library:
 Hyperparameters
 ------------
 
+Hyperparameters are parameters whose value are used to control the learning process.
+
 .. code-block:: console
 
    batch_size = 128
@@ -37,6 +39,13 @@ Hyperparameters
    print_freq = 100
 
    lr = 1e-3
+
+.. _Dataset:
+
+Dataset
+------------
+
+Test on the MNIST dataset and compute the variance of the whole training set to normalise the Mean Squared Error.
 
 
 
