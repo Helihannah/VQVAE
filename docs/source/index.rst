@@ -8,5 +8,5 @@ Contents
 
 .. toctree::
 
-   Architecture
+   model
    Results
