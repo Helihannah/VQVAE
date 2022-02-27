@@ -22,6 +22,35 @@ To build the architecture of VQVAE, first import library:
    import seaborn as sns
    %matplotlib inline
 
+.. _Hyperparameters:
+
+Hyperparameters
+------------
+
+.. code-block:: console
+
+   batch_size = 128
+   embedding_dim = 16
+   num_embeddings = 128
+
+   epochs = 50
+   print_freq = 100
+
+   lr = 1e-3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Creating recipes
 ----------------
 
